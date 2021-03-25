@@ -163,8 +163,8 @@ defmodule Xain do
       rescue
         exception ->
           Logger.error inspect(exception)
-          Logger.error inspect(System.stacktrace)
-          reraise exception, System.stacktrace
+          Logger.error inspect(__STACKTRACE__)
+          reraise exception, __STACKTRACE__
       end
       if opts[:safe] do
         case Application.get_env :xain, :after_callback do
